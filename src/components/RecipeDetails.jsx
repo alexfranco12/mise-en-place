@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Ingredients from './Ingredients';
 import Instructions from './Instructions';
 
 function RecipeDetails( {match} ) {
@@ -31,21 +32,19 @@ function RecipeDetails( {match} ) {
         <div className="details-container">
             <h1>{recipe.title}</h1>
             
-            <div className="Summary">
-                {recipe.summary}
-            </div>
+            <p className="Summary" dangerouslySetInnerHTML={{__html: recipe.summary}}>
+            </p>
 
             <div className="container">
                 <img src={recipe.image} alt={recipe.title} />
                 
                 <div className="Ingredients">
-                    <p>ingredients</p>
+                    <Ingredients recipeId={match.params.id} />
                 </div>
             </div>
             
-            <div className="Directions">
-                {recipe.instructions}
-            </div>
+            <p className="Directions" dangerouslySetInnerHTML={{__html: recipe.instructions}}>
+            </p>
             
         </div>
     );

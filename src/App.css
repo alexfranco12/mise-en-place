@@ -63,3 +63,7 @@ img {
   margin: 30px;
   width: 200px;
 }
+
+.container {
+  display: flex;
+}

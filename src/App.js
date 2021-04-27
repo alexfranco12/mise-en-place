@@ -3,6 +3,7 @@ import Header from './components/Header'
 import Home from './components/Home'
 import Sidebar from './components/Sidebar'
 import RecipeDetails from './components/RecipeDetails'
+import About from './components/About'
 import './App.css';
 
 function App() {
@@ -14,27 +15,23 @@ function App() {
 
       <nav className="Navigation">
         <Link to="/">home</Link>
-        <p>about</p>
+        <Link to="/about">about</Link>
         <p>recipes</p>
         <p>meal plan</p>
       </nav>
 
-      <div className="Home">
+      <main className="Home">
         <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
         <Route path="/details/:id" render={routerProps => (
           <RecipeDetails match={routerProps.match} />
         )}/>
-      </div>
+      </main>
 
       <div className="Sidebar">
         <Sidebar />
       </div>
       
-      
-
-      <main className="Main">
-        
-      </main>
     </div>
   );
 }
