@@ -1,7 +1,8 @@
 .App {
   display: grid;
-  grid-template-columns: [start] 20px [col2-start] auto [col3-start] 200px [end];
+  grid-template-columns: [start] 20px [col2-start] auto [col3-start] 300px [end];
   grid-template-rows: [first-line] 80px [row2] 40px [row3] 600px [row4] auto [last-line];
+  background-color: whitesmoke;
 }
 
 .App-header {
@@ -9,6 +10,8 @@
   grid-column-end: end;
   grid-row-start: first-line;
   grid-row-end: row2;
+
+  text-align: center;
 }
 
 .Navigation {
@@ -27,6 +30,11 @@
   grid-column-end: col3-start;
   grid-row-start: row3;
   grid-row-end: last-line;
+}
+
+.search-form {
+  text-align: center;
+  margin: 10px;
 }
 
 .Sidebar {
@@ -48,9 +56,10 @@
   max-width: 250px;
 }
 img {
+  background-color: lightgrey;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
-  margin: 10px;
-  width: 250px;
+  margin: 30px;
+  width: 200px;
 }
