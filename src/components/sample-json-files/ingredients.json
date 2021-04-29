@@ -1,0 +1,214 @@
+{
+    "ingredients": [
+        {
+            "name": "apple cider vinegar",
+            "image": "apple-cider-vinegar.jpg",
+            "amount": {
+                "metric": {
+                    "value": 478.0,
+                    "unit": "ml"
+                },
+                "us": {
+                    "value": 2.0,
+                    "unit": "cups"
+                }
+            }
+        },
+        {
+            "name": "boneless pork shoulder",
+            "image": "pork-shoulder.png",
+            "amount": {
+                "metric": {
+                    "value": 1.361,
+                    "unit": "kilogram"
+                },
+                "us": {
+                    "value": 3.0,
+                    "unit": "pounds"
+                }
+            }
+        },
+        {
+            "name": "dark brown sugar",
+            "image": "dark-brown-sugar.png",
+            "amount": {
+                "metric": {
+                    "value": 165.0,
+                    "unit": "g"
+                },
+                "us": {
+                    "value": 0.75,
+                    "unit": "cup"
+                }
+            }
+        },
+        {
+            "name": "butter",
+            "image": "butter-sliced.jpg",
+            "amount": {
+                "metric": {
+                    "value": 2.0,
+                    "unit": "tsps"
+                },
+                "us": {
+                    "value": 2.0,
+                    "unit": "tsps"
+                }
+            }
+        },
+        {
+            "name": "celery salt",
+            "image": "garlic-salt.jpg",
+            "amount": {
+                "metric": {
+                    "value": 0.5,
+                    "unit": "tsps"
+                },
+                "us": {
+                    "value": 0.5,
+                    "unit": "tsps"
+                }
+            }
+        },
+        {
+            "name": "dry mustard",
+            "image": "dry-mustard.jpg",
+            "amount": {
+                "metric": {
+                    "value": 0.5,
+                    "unit": "tsps"
+                },
+                "us": {
+                    "value": 0.5,
+                    "unit": "tsps"
+                }
+            }
+        },
+        {
+            "name": "garlic salt",
+            "image": "garlic-salt.jpg",
+            "amount": {
+                "metric": {
+                    "value": 0.5,
+                    "unit": "tsps"
+                },
+                "us": {
+                    "value": 0.5,
+                    "unit": "tsps"
+                }
+            }
+        },
+        {
+            "name": "black ground pepper",
+            "image": "pepper.jpg",
+            "amount": {
+                "metric": {
+                    "value": 1.5,
+                    "unit": "tsps"
+                },
+                "us": {
+                    "value": 1.5,
+                    "unit": "tsps"
+                }
+            }
+        },
+        {
+            "name": "ketchup",
+            "image": "ketchup.png",
+            "amount": {
+                "metric": {
+                    "value": 160.0,
+                    "unit": "ml"
+                },
+                "us": {
+                    "value": 0.6666666666666666,
+                    "unit": "cup"
+                }
+            }
+        },
+        {
+            "name": "light brown sugar",
+            "image": "dark-brown-sugar.png",
+            "amount": {
+                "metric": {
+                    "value": 2.0,
+                    "unit": "tsps"
+                },
+                "us": {
+                    "value": 2.0,
+                    "unit": "tsps"
+                }
+            }
+        },
+        {
+            "name": "liquid smoke",
+            "image": "dark-sauce.jpg",
+            "amount": {
+                "metric": {
+                    "value": 3.0,
+                    "unit": "Tbsps"
+                },
+                "us": {
+                    "value": 3.0,
+                    "unit": "Tbsps"
+                }
+            }
+        },
+        {
+            "name": "onion powder",
+            "image": "onion-powder.jpg",
+            "amount": {
+                "metric": {
+                    "value": 0.5,
+                    "unit": "tsps"
+                },
+                "us": {
+                    "value": 0.5,
+                    "unit": "tsps"
+                }
+            }
+        },
+        {
+            "name": "crushed red pepper flakes",
+            "image": "red-pepper-flakes.jpg",
+            "amount": {
+                "metric": {
+                    "value": 3.0,
+                    "unit": "tsps"
+                },
+                "us": {
+                    "value": 3.0,
+                    "unit": "tsps"
+                }
+            }
+        },
+        {
+            "name": "salt",
+            "image": "salt.jpg",
+            "amount": {
+                "metric": {
+                    "value": 12.0,
+                    "unit": "servings"
+                },
+                "us": {
+                    "value": 12.0,
+                    "unit": "servings"
+                }
+            }
+        },
+        {
+            "name": "water",
+            "image": "water.png",
+            "amount": {
+                "metric": {
+                    "value": 236.588,
+                    "unit": "ml"
+                },
+                "us": {
+                    "value": 1.0,
+                    "unit": "cups"
+                }
+            }
+        }
+    ]
+}

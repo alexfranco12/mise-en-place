@@ -1,69 +1,30 @@
 .App {
-  display: grid;
-  grid-template-columns: [start] 20px [col2-start] auto [col3-start] 300px [end];
-  grid-template-rows: [first-line] 80px [row2] 40px [row3] 600px [row4] auto [last-line];
-  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Raleway';
+  background-color: rgb(252, 252, 248);
 }
 
 .App-header {
-  grid-column-start: start;
-  grid-column-end: end;
-  grid-row-start: first-line;
-  grid-row-end: row2;
-
   text-align: center;
 }
 
-.Navigation {
-  grid-column-start: start;
-  grid-column-end: end;
-  grid-row-start: row2;
-  grid-row-end: row3;
-  text-align: center;
+.App-header h1 {
+  font-family: 'Prata';
+  font-size: 50pt;
+  margin-bottom: -20px;
+}
 
+.App-header p {
+  font-size: 12pt;
+}
+
+.Navigation {
   display: flex;
   justify-content: space-around;
 }
 
-.Home {
-  grid-column-start: start;
-  grid-column-end: col3-start;
-  grid-row-start: row3;
-  grid-row-end: last-line;
-}
-
-.search-form {
-  text-align: center;
-  margin: 10px;
-}
-
-.Sidebar {
-  grid-column-start: col3-start;
-  grid-column-end: end;
-  grid-row-start: row3;
-  grid-row-end: last-line;
-  text-align: center;
-}
-
-.cards-container {
-  display: flex;
-  flex-flow: wrap row;
-}
-.card-title {
-  text-align: center;
-  font-size: 10px;
-  overflow-wrap: normal;
-  max-width: 250px;
-}
-img {
-  background-color: lightgrey;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  margin: 30px;
-  width: 200px;
-}
-
+/* for ingredients */
 .container {
   display: flex;
 }

@@ -1,12 +1,22 @@
+import { useEffect } from 'react'
 import { Route, Link } from 'react-router-dom'
 import Header from './components/Header'
-import Home from './components/Home'
-import Sidebar from './components/Sidebar'
-import RecipeDetails from './components/RecipeDetails'
+import Home from './components/home/Home'
+import RecipeDetails from './components/recipe-details/RecipeDetails'
 import About from './components/About'
+import WebFont from 'webfontloader';
 import './App.css';
 
 function App() {
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Prata', 'Raleway']
+      }
+    });
+   }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -20,17 +30,19 @@ function App() {
         <p>meal plan</p>
       </nav>
 
-      <main className="Home">
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/details/:id" render={routerProps => (
+      <main className="Main">
+        <div>
+          <Route exact path="/" component={Home} />
+        </div>
+
+        <Route exact path="/about" component={About} />
+        <Route exact path="/details/:id" render={routerProps => (
           <RecipeDetails match={routerProps.match} />
         )}/>
+        
       </main>
 
-      <div className="Sidebar">
-        <Sidebar />
-      </div>
+      
       
     </div>
   );
