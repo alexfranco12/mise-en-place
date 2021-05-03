@@ -26,8 +26,6 @@ function App() {
       <nav className="Navigation">
         <Link to="/">home</Link>
         <Link to="/about">about</Link>
-        <p>recipes</p>
-        <p>meal plan</p>
       </nav>
 
       <main className="Main">

@@ -2,74 +2,85 @@ import React, { useEffect, useState } from 'react';
 import image from '../images/no-image.jpeg'
 import data from '../sample-json-files/randomRecipes.json'
 import Sidebar from '../sidebar/Sidebar';
+import { FilterContext } from '../FilterContext'
 import { Link } from 'react-router-dom';
 import './Home.css';
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
-    const [tags, setTags] = useState({
-        diets: "",
+    const [ tags, setTags ] = useState({
+        diet: "",
         mealTypes: "",
-        cuisine: [],
-        intolerances: ""
+        cuisine: new Set(),
+        intolerances: new Set()
     });
-    let userInput;
-    let cuisineArray = [];
-
+    const [userInput, setUserInput] = useState("");
 
     const searchOptions = {
         key : process.env.REACT_APP_SPOONACULAR_KEY,
         baseURL : "https://api.spoonacular.com/recipes",
+        cuisine : "",
+        query : "",
+        diet : "",
         tags : "",
-        ingredients : "",
+        intolerances : "",
         number : 25,
         filterType : "random"
     };
 
     function fetchRecipes() {
-        setRecipes(data.recipes)
 
-        const url = `${searchOptions.baseURL}/${searchOptions.filterType}?${searchOptions.ingredients}${searchOptions.tags}number=${searchOptions.number}&apiKey=${searchOptions.key}`
-        console.log(url);
-    //     fetch(url)
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             console.log(data)
-    //             if (searchOptions.filterType === "random") setRecipes(data.recipes);
-    //             else if (searchOptions.filterType === "findByIngredients") setRecipes(data);
-    //         })
-    //         .catch(console.error);
+        if (searchOptions.filterType === 'complexSearch') {
+            searchOptions.tags = "";
+            searchOptions.cuisine = "cuisine="+[...tags.cuisine].join(',')+"&"
+            searchOptions.diet = "diet="+tags.diet+"&"
+            searchOptions.intolerances = "intolerances="+[...tags.intolerances].join(',')+"&"
+        }
+
+        const url = `${searchOptions.baseURL}/${searchOptions.filterType}?${searchOptions.tags}${searchOptions.query}${searchOptions.cuisine}${searchOptions.diet}${searchOptions.intolerances}number=${searchOptions.number}&apiKey=${searchOptions.key}`
+
+        // console.log("new search")
+        // console.log(url);
+
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                if (searchOptions.filterType === 'random') setRecipes(data.recipes)
+                if (searchOptions.filterType === 'complexSearch') setRecipes(data.results)
+            })
+            .catch(console.error);
     }
 
     useEffect(() => {
         fetchRecipes()
-    }, []);
+    }, [searchOptions.query, searchOptions.cuisine, searchOptions.filterType]);
 
     function handleChange(e) {
-        userInput = e.target.value;
+        setUserInput(e.target.value);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
         let ingredientList = userInput.split(' ');
-        searchOptions.tags = "";
-        searchOptions.filterType = "findByIngredients";
-        searchOptions.ingredients = "ingredients="+ingredientList.join(',')+"&";
+        searchOptions.filterType = "complexSearch";
+        searchOptions.query = "query="+ingredientList.join(',')+"&";
+        
         fetchRecipes();
+        setUserInput("");
     }
 
-    const handleClick = (e) => {
-        searchOptions.filterType = "random"
-        console.log(e.target.id)
-        if (e.target.id === "cuisine") {
-            cuisineArray.push(e.target.value)
-            console.log(cuisineArray)
-            setTags({...tags, "cuisine": cuisineArray});
+    const handleFilterSubmit = (e) => {
+        e.preventDefault();
+        
+        console.log("Filter Tags:")
+        console.log(tags);
+
+        if (searchOptions.filterType === 'random') {
+            searchOptions.tags = "tags="+[...tags.cuisine].join('')+tags.diet+"&";
+        } 
+        if(tags.intolerances.size > 0) {
+            searchOptions.filterType = "complexSearch";
         }
-    }
-
-    const filterFunction = () => {
-        searchOptions.tags = "tags="+tags.cuisine+"&";
         fetchRecipes();
     }
 
@@ -81,11 +92,16 @@ function Home() {
     return (
         <div className="Home">
             <form className="search-form" onSubmit={handleSubmit} >
-                <label htmlFor="header-search">Search for your favorite recipe: </label>
-                <input type="text" id="header-search" placeholder="search recipes" onChange={handleChange} />
-                <input type="submit" />
+                <label htmlFor="header-search"></label>
+                <input 
+                    id="header-search"
+                    onChange={handleChange}
+                    placeholder="Search for your favorite recipe"
+                    value={userInput}
+                    type="text"
+                    required />
+                <input type="submit" className="search-button" value="Search"/>
             </form> 
-            <h2 className="home-title"> Get inspired with some fresh recipes below! </h2>
             <div className="cards-container">
                 {recipes.map(recipe => (
                     <Link to={`/details/${recipe.id}`} key={recipe.id}>
@@ -106,7 +122,13 @@ function Home() {
                 ))}
             </div>
             <div className="Sidebar">
-                <Sidebar handleClick={handleClick} handleFilter={filterFunction}/>
+                <form onSubmit={handleFilterSubmit}>
+                    <input type="submit" value="Filter" />
+                    <button type="button">Reset Filter</button>
+                    <FilterContext.Provider value={{ tags, setTags }}>
+                        <Sidebar />
+                    </FilterContext.Provider>
+                </form> 
             </div>
         </div>
         

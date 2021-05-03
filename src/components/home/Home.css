@@ -16,7 +16,11 @@
 }
 
 #header-search {
-  width: 300px;
+  width: 500px;
+  padding: 5px 0;
+}
+.search-button {
+  padding: 5px 0;
 }
 
 .home-title {
@@ -34,31 +38,40 @@
   grid-row-start: row3;
   grid-row-end: last-line;
 
+  border-left: solid 1px;
+  margin-left: 30px;
+
   display: flex;
   flex-flow: wrap row;
 }
 
+.card {  
+  width: 300px;
+  color: green;
+  font-style: none;
+
+  margin: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 .card-title {
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
   overflow-wrap: normal;
-  max-width: 250px;
+  padding: 5px 20px;
 }
 
 .home-images {
-  background-color: lightgrey;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  margin: 30px;
-  width: 200px;
+  width: 100%;
 }
 
 .Sidebar {
   grid-column-start: col3;
   grid-column-end: end;
-  grid-row-start: row2;
+  grid-row-start: row3;
   grid-row-end: last-line;
+
+  margin-top: 20px;
 }
 
 button {

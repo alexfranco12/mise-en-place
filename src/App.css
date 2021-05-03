@@ -1,7 +1,7 @@
 .App {
-  display: flex;
+  display: flexbox;
   flex-direction: column;
-  font-family: 'Raleway';
+  font-family: 'montserrat';
   background-color: rgb(252, 252, 248);
 }
 
@@ -12,7 +12,7 @@
 .App-header h1 {
   font-family: 'Prata';
   font-size: 50pt;
-  margin-bottom: -20px;
+  margin-bottom: -30px;
 }
 
 .App-header p {
@@ -22,9 +22,5 @@
 .Navigation {
   display: flex;
   justify-content: space-around;
-}
-
-/* for ingredients */
-.container {
-  display: flex;
+  margin: 10px 0;
 }
