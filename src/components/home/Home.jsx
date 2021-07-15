@@ -39,8 +39,8 @@ function Home() {
 
         const url = `${searchOptions.baseURL}/${searchOptions.filterType}?${searchOptions.tags}${searchOptions.query}${searchOptions.cuisine}${searchOptions.diet}${searchOptions.intolerances}number=${searchOptions.number}&apiKey=${searchOptions.key}`
 
-        // console.log("new search")
-        // console.log(url);
+        console.log("new search")
+        console.log(url);
 
         fetch(url)
             .then((response) => response.json())
@@ -53,7 +53,7 @@ function Home() {
 
     useEffect(() => {
         fetchRecipes()
-    }, [searchOptions.query, searchOptions.cuisine, searchOptions.filterType]);
+    }, []);
 
     function handleChange(e) {
         setUserInput(e.target.value);
@@ -104,7 +104,7 @@ function Home() {
             </form> 
             <div className="cards-container">
                 {recipes.map(recipe => (
-                    <Link to={`/details/${recipe.id}`} key={recipe.id}>
+                    <Link to={`/details/${recipe.id}`} key={recipe.id} className="link">
                         <div className="card">
                             <div className="card-image">
                                 <img

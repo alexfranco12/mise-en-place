@@ -7,26 +7,10 @@
   border-width: 0 0 5px 0;
   border-color: rgb(0, 0, 0, .20);
 }
-.ingredient-container {
-    display: flex;
-    border: solid;
-    border-width: 1px 0;
-    padding: 10px 0 20px 0;
-    margin: 10px 0;
-}
-.credits {
-  font-size: 11pt;
+.recipe-tags {
+  display: flex;
   line-height: 0rem;
-}
-.summary {
-  text-align: justify;
-}
-.recipe-image {
-  align-self: center;
-  width: 30%;
-  max-width: 350px;
-  height: auto;
-  margin: 0 20px 0 0;
+  padding: 0 15px;
 }
 .diet {
   background-color: rgb(176, 196, 222, .5);
@@ -36,6 +20,29 @@
   border-radius: 1rem;
   padding: 4px;
   margin: 0 3px;
+}
+.ready-in {
+  margin: auto 30px;
+}
+.credits {
+  line-height: 0rem;
+}
+.summary {
+  text-align: justify;
+}
+.recipe-image {
+  align-self: center;
+  width: 60%;
+  max-width: 350px;
+  height: auto;
+  margin: 0 20px 0 0;
+}
+.ingredient-container {
+  display: flex;
+  border: solid;
+  border-width: 1px 0;
+  padding: 10px 0 20px 0;
+  margin: 10px 0;
 }
 .ingredients {
   display: flex;
@@ -56,6 +63,15 @@
 .step {
   margin: 5px;
 }
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  border: solid 1px;
+}
+.comment-header {
+  padding-left: 10px;
+}
 .comment-form {
   display: flex;
   flex-direction: column;
@@ -70,14 +86,18 @@
 .post-comment {
   align-self: flex-end;
   margin-top: 5px;
+  height: 25px;
+  width: 75px;
 }
 .comment {
+  align-self: flex-start;
   padding: 8px;
-  margin: 5px;
+  margin: 2px 20px;
+  width: 80%;
   background-color: white;
   border: solid;
   border-width: 1px;
-  border-radius: 1em;
+  border-radius: .25rem;
 }
 .user-name {
   margin: 5px 10px;

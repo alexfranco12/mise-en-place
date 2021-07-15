@@ -24,15 +24,12 @@ function App() {
       </header>
 
       <nav className="Navigation">
-        <Link to="/">home</Link>
-        <Link to="/about">about</Link>
+        <Link to="/" className="link">home</Link>
+        <Link to="/about" className="link">about</Link>
       </nav>
 
       <main className="Main">
-        <div>
-          <Route exact path="/" component={Home} />
-        </div>
-
+        <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
         <Route exact path="/details/:id" render={routerProps => (
           <RecipeDetails match={routerProps.match} />

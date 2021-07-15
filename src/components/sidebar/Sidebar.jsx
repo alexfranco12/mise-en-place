@@ -3,6 +3,7 @@ import { FilterContext } from '../FilterContext'
 import './Sidebar.css'
 
 function Sidebar( ) {
+    // useContext to pass the tags from the sidebar component to the recipe details component.
     const { tags, setTags } = useContext(FilterContext);
 
     const cuisines = [

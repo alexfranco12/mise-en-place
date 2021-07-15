@@ -47,7 +47,7 @@
 
 .card {  
   width: 300px;
-  color: green;
+  color: black;
   font-style: none;
 
   margin: 20px;
@@ -60,11 +60,9 @@
   overflow-wrap: normal;
   padding: 5px 20px;
 }
-
 .home-images {
   width: 100%;
 }
-
 .Sidebar {
   grid-column-start: col3;
   grid-column-end: end;
@@ -73,7 +71,6 @@
 
   margin-top: 20px;
 }
-
 button {
   margin: auto 10px;
 }
