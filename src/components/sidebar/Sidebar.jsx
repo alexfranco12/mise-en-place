@@ -1,8 +1,33 @@
 import React, { useContext } from 'react';
 import { FilterContext } from '../FilterContext'
-import './Sidebar.css'
 
 function Sidebar( ) {
+
+    // const [ tags, setTags ] = useState({
+    //     diet: "",
+    //     mealTypes: "",
+    //     cuisine: new Set(),
+    //     intolerances: new Set()
+    // });
+    // const [userInput, setUserInput] = useState("");
+
+
+
+    // const handleFilterSubmit = (e) => {
+    //     e.preventDefault();
+        
+    //     console.log("Filter Tags:")
+    //     console.log(tags);
+
+    //     if (searchOptions.filterType === 'random') {
+    //         searchOptions.tags = "tags="+[...tags.cuisine].join('')+tags.diet+"&";
+    //     } 
+    //     if(tags.intolerances.size > 0) {
+    //         searchOptions.filterType = "complexSearch";
+    //     }
+    //     fetchRecipes();
+    // }
+
     // useContext to pass the tags from the sidebar component to the recipe details component.
     const { tags, setTags } = useContext(FilterContext);
 
@@ -70,6 +95,16 @@ function Sidebar( ) {
 
     return (
         <div>  
+            {/* <div className="Sidebar">
+                <form onSubmit={handleFilterSubmit}>
+                    <input type="submit" value="Filter" />
+                    <button type="button">Reset Filter</button>
+                    <FilterContext.Provider value={{ tags, setTags }}>
+                        <Sidebar />
+                    </FilterContext.Provider>
+                </form> 
+            </div> */}
+            
             <h5>Diet Regime</h5>
             <div className="filter-container">
                 {diets.map(diet => (

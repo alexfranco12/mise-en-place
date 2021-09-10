@@ -1,45 +1,31 @@
-import { useEffect } from 'react'
-import { Route, Link } from 'react-router-dom'
-import Header from './components/Header'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Home from './components/home/Home'
 import RecipeDetails from './components/recipe-details/RecipeDetails'
-import About from './components/About'
-import WebFont from 'webfontloader';
-import './App.css';
+import About from './components/about/About'
+import NotFound from './components/NotFound'
+import RandomRecipes from './components/random-recipes/RandomRecipes';
 
 function App() {
-
-  useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ['Prata', 'Raleway']
-      }
-    });
-   }, []);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <Header />
-      </header>
+    <Router>
+      <div className="App">
+        <nav className="Navigation">
+          <Navbar />
+        </nav>
 
-      <nav className="Navigation">
-        <Link to="/" className="link">home</Link>
-        <Link to="/about" className="link">about</Link>
-      </nav>
+        <main className="Main">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/recipe/details/:id" component={RecipeDetails} />
+            <Route path="/search/:ingredientList" component={RandomRecipes} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </main>
 
-      <main className="Main">
-        <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/details/:id" render={routerProps => (
-          <RecipeDetails match={routerProps.match} />
-        )}/>
-        
-      </main>
-
-      
-      
-    </div>
+      </div>
+    </Router>
   );
 }
 
