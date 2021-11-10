@@ -1,7 +1,6 @@
 # Recipe Search App
 
 ## About
-
 This is a Recipe App that uses SPOONACULAR's API which allows me to search through a number of recipes using advanced filtering.
 
 ## The App
@@ -9,9 +8,11 @@ This is a Recipe App that uses SPOONACULAR's API which allows me to search throu
 
 ![Recipe](./readme-images/recipecard.png)
 
-## Technologies used
-JavaScript/HTML/CSS
-React.js library
+## Technologies Used
+HTML
+CSS
+JavaScript
+React.js
 Heroku
 Spoonacular API
 Google Fonts
@@ -21,9 +22,9 @@ Google Fonts
 
 ![Wireframe Recipe Card](./readme-images/wireframe-recipecard.png)
 
-## User Stories
+## User Stories (MVP)
 - As a user, I want to log on and see new recipes so that I may feel inspired.
-- As a user, I want to be able to filter by dietary restrictions to avoid falling ill or having a reaction.
+- As a user, I want to be able to filter by dietary restrictions.
 - As a user, I want to preview pictures to see what I am having for a meal
 - As a user, I want to be able to search for a specific recipe so that I don't have to go down the rabbit hole of filtering.
 - As a user, I want to see a short description of the meal.
@@ -31,18 +32,35 @@ Google Fonts
 - As a user, I want step-by-step instructions
 - As a user, I want to see similar recipes to the one I chose.
 
-## MVP Goals
-- [x] main page with random recipe cards
-- [x] sidebar with diet regime
-- [x] sidebar with dietary restriction filter
-- [x] search bar for desired recipes
+## TO-DOs
+- [x] Main page with random recipe cards
+  - [x] Preview Pictures
+  - [x] Likes
+  - [x] Servings
+  - [ ] Short desctription under pictures
+  - [ ] condition for if recipe object doesnt have servings or readyInMinutes keys
+  - [ ] Rating
+- [x] Navigation Bar
+  - [x] Home
+  - [x] About
+- [x] Details page for each recipe
+  - [x] List ingredients
+  - [x] List step-by-step instructions
+  - [ ] See similar recipes
+  - [ ] List equipment needed
+  - [ ] List the recipe's sweetness/savoriness/bitterness levels
+  - [ ] Food trivia/jokes
+- [x] Search bar for desired recipes
+- [ ] Sidebar
+  - [ ] Filter by dietary restriction
+  - [ ] Filter by cuisine
+- [ ] Allow users to comment
+- [ ] Styling
+  - [ ] Make all images the same size
+  - [ ] 
+- [ ] Login
+- [ ] create a DB for comments
+
 
 ## Major Hurdles
 This project was challenging and I learned a lot from my struggles. My first hurdle was learning how to use Postman to my benifit and how the Spoonacular API functions. My biggest hurdle was trying to pass information from one component to another component and then once its passed, being able to iterate through the elements to be able to display the information I wanted to the page. Another hurdle I continue to have is CSS and styling. 
-
-## Stretch Goals
-- [x] filter by cuisine
-- [ ] see a given recipes sweetness/savoriness/bitterness/... levels
-- [ ] display similar recipes
-- [ ] list equipment needed
-- [ ] food trivia/jokes

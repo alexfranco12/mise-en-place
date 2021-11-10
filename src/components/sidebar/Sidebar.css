@@ -1,0 +1,13 @@
+.Sidebar {
+  margin: auto 20px;
+}
+.sidebar__cuisine, .sidebar__diets, .sidebar__intolerances {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar__cuisine {
+  
+}
+.sidebar__diets, .sidebar__intolerances {
+  margin: 15px auto;
+}

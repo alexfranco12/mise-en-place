@@ -1,166 +1,240 @@
-import React, { useContext } from 'react';
-import { FilterContext } from '../FilterContext'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Sidebar.css'
 
-function Sidebar( ) {
+const Sidebar = ( ) => {
+  const [ cuisine, setCuisine ] = useState(null);
+  const [ diet, setDiet ] = useState(null);
+  const [ intolerances, setIntolerances ] = useState(null);
+  const i = new Set();
 
-    // const [ tags, setTags ] = useState({
-    //     diet: "",
-    //     mealTypes: "",
-    //     cuisine: new Set(),
-    //     intolerances: new Set()
-    // });
-    // const [userInput, setUserInput] = useState("");
+  const updateCuisine = (e) => {
+    setCuisine(e.target.value)
+  }
 
+  const updateDiet = (e) => {
+    setDiet(e.target.value)
+  }
 
+  const updateIntolerances = (e) => {
 
-    // const handleFilterSubmit = (e) => {
-    //     e.preventDefault();
+    setIntolerances(e.target.value)
+    console.log(intolerances)
+  }
+
+  return (
+    <div className="Sidebar">
+      <Link 
+        to={`/random-search/${cuisine+" "+diet}`}
+        className="button search__button">
+          <button className="filter__button">FILTER</button>
+      </Link>
+
+      <div className="sidebar__cuisine">
+        <h3 className="cuisine__title">CUISINE</h3>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="african" 
+            value="african"
+            onChange={updateCuisine}
+            /> african
+        </label>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="american" 
+            value="american"
+            onChange={updateCuisine}
+            /> american
+        </label>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="asian" 
+            value="asian"
+            onChange={updateCuisine}
+            /> asian
+        </label>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="chinese" 
+            value="chinese"
+            onChange={updateCuisine}
+            /> chinese
+        </label>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="european" 
+            value="european"
+            onChange={updateCuisine}
+            /> european
+        </label>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="french" 
+            value="french"
+            onChange={updateCuisine}
+            /> french
+        </label>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="german" 
+            value="german"
+            onChange={updateCuisine}
+            /> german
+        </label>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="indian" 
+            value="indian"
+            onChange={updateCuisine}
+            /> indian
+        </label>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="japenese" 
+            value="japenese"
+            onChange={updateCuisine}
+            /> japenese
+        </label>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="mediterranean" 
+            value="mediterranean"
+            onChange={updateCuisine}
+            /> mediterranean
+        </label>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="mexican" 
+            value="mexican"
+            onChange={updateCuisine}
+            /> mexican
+        </label>
+        <label htmlFor="cuisine">
+          <input 
+            type="radio" 
+            name="cuisine" 
+            id="thai" 
+            value="thai"
+            onChange={updateCuisine}
+            /> thai
+        </label>
+      </div>
+
+      {/* Sidebar diet filter */}
+      <div className="sidebar__diets">
+        <h3 className="diets__title">DIETS</h3>
+        <label htmlFor="Diet">
+          <input 
+            type="radio" 
+            name="Diet" 
+            id="vegetarian" 
+            value="vegetarian"
+            onChange={updateDiet}
+            /> vegetarian
+        </label>
+        <label htmlFor="Diet">
+          <input 
+            type="radio" 
+            name="Diet" 
+            id="pescetarian" 
+            value="pescetarian"
+            onChange={updateDiet}
+            /> pescetarian
+        </label>
+        <label htmlFor="Diet">
+          <input 
+            type="radio" 
+            name="Diet" 
+            id="vegan" 
+            value="vegan"
+            onChange={updateDiet}
+            /> vegan
+        </label>
+        <label htmlFor="Diet">
+          <input 
+            type="radio" 
+            name="Diet" 
+            id="ketogenic" 
+            value="ketogenic"
+            onChange={updateDiet}
+            /> ketogenic
+        </label>
+        <label htmlFor="Diet">
+          <input 
+            type="radio" 
+            name="Diet" 
+            id="paleo" 
+            value="paleo"
+            onChange={updateDiet}
+            /> paleo
+        </label>
+        <label htmlFor="Diet">
+          <input 
+            type="radio" 
+            name="Diet" 
+            id="primal" 
+            value="primal"
+            onChange={updateDiet}
+            /> primal
+        </label>
+        <label htmlFor="Diet">
+          <input 
+            type="radio" 
+            name="Diet" 
+            id="whole30" 
+            value="whole30"
+            onChange={updateDiet}
+            /> whole30
+        </label>
+      </div>
+
+      {/* sidebar intolerance filter */}
+      <div className="sidebar__intolerances">
+        <h3 className="intolerances__title">INTOLERANCES</h3>
+        <label htmlFor="intolerance">
+          <input 
+            type="checkbox" 
+            name="intolerance" 
+            id="gluten-free" 
+            value="gluten free"
+            onChange={updateIntolerances}
+            /> no gluten
+        </label>
+        <label htmlFor="intolerance">
+          <input 
+            type="checkbox" 
+            name="intolerance" 
+            id="dairy-free" 
+            value="dairy free"
+            onChange={updateIntolerances}
+            /> no dairy
+        </label>
+      </div>
         
-    //     console.log("Filter Tags:")
-    //     console.log(tags);
-
-    //     if (searchOptions.filterType === 'random') {
-    //         searchOptions.tags = "tags="+[...tags.cuisine].join('')+tags.diet+"&";
-    //     } 
-    //     if(tags.intolerances.size > 0) {
-    //         searchOptions.filterType = "complexSearch";
-    //     }
-    //     fetchRecipes();
-    // }
-
-    // useContext to pass the tags from the sidebar component to the recipe details component.
-    const { tags, setTags } = useContext(FilterContext);
-
-    const cuisines = [
-        'african',
-        'american',
-        'chinese',
-        'european',
-        'french',
-        'german',
-        'indian',
-        'japenese',
-        'mexican',
-        'thai',
-    ];
-
-    const diets = [
-        'vegetarian',
-        'pescetarian',
-        'vegan',
-        'ketogenic',
-        'paleo',
-        'primal',
-        'whole30',
-    ];
-
-    const intolerances = [
-        'dairy',
-        'egg',
-        'gluten',
-        'grain',
-        'peanut',
-        'seafood',
-        'sesame',
-        'shellfish',
-        'soy',
-        'sulfite',
-        'tree Nut',
-        'wheat',
-    ];
-
-    const toggleCheckbox = (e) => {
-        if (e.target.id === 'cuisine') {
-            if (tags.cuisine.has(e.target.value)) {
-                tags.cuisine.delete(e.target.value);
-            } else {
-                tags.cuisine.add(e.target.value);
-            }
-        }
-        if (e.target.id === 'diet') {
-            tags.diet = e.target.value;
-        }
-        if (e.target.id === 'intolerance') {
-            if (tags.intolerances.has(e.target.value)) {
-                tags.intolerances.delete(e.target.value);
-            } else {
-                tags.intolerances.add(e.target.value);
-            }
-        }
-    }
-
-    // useEffect(() => {
-    //     toggleCheckbox();
-    // })
-
-    return (
-        <div>  
-            {/* <div className="Sidebar">
-                <form onSubmit={handleFilterSubmit}>
-                    <input type="submit" value="Filter" />
-                    <button type="button">Reset Filter</button>
-                    <FilterContext.Provider value={{ tags, setTags }}>
-                        <Sidebar />
-                    </FilterContext.Provider>
-                </form> 
-            </div> */}
-            
-            <h5>Diet Regime</h5>
-            <div className="filter-container">
-                {diets.map(diet => (
-                    <div className="checkbox">
-                        <label>
-                            <input
-                                type="radio"
-                                name="choice"
-                                id='diet'
-                                value={diet}
-                                // checked={isChecked}
-                                onChange={toggleCheckbox}
-                            />
-                        {diet}
-                        </label>
-                    </div> 
-                ))}              
-            </div>
-            <h5>Dietary Intolerances</h5>
-            <div className="filter-container">
-                {intolerances.map(intolerance => (
-                    <div className="checkbox">
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="choice"
-                                id='intolerance'
-                                value={intolerance}
-                                // checked={isChecked}
-                                onChange={toggleCheckbox}
-                            />
-                        {intolerance}
-                        </label>
-                    </div> 
-                ))}              
-            </div>     
-            <h5>Cuisine</h5>
-            <div className="filter-container">
-                {cuisines.map(cuisine => (
-                    <div className="checkbox">
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="choice"
-                                id='cuisine'
-                                value={cuisine}
-                                // checked={isChecked}
-                                onChange={toggleCheckbox}
-                            />
-                        {cuisine}
-                        </label>
-                    </div> 
-                ))}              
-            </div>
-        </div>
-    );
+    </div>
+  );
 }
 
 export default Sidebar;

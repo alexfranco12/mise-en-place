@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const CommentSection = () => {
   const [userComments, setUserComments] = useState([]);
   const [name, setName] = useState("");
@@ -20,11 +22,11 @@ const CommentSection = () => {
   }
 
   function displayComments() {
-    return userComments.map(item => {
+    return userComments.map(comment => {
       return (
         <div className="comment">
-          <h4 className="user-name">{item.user.name} - </h4>
-          <p className="user-comment">{item.user.comment}</p>
+          <h4 className="user-name">{comment.user.name} - </h4>
+          <p className="user-comment">{comment.user.comment}</p>
         </div>
     )})
   }
