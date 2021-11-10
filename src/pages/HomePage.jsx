@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-import { SearchBar } from '../components';
-import useFetch from '../components/useFetch';
-import RecipeList from '../components/recipe-list/RecipeList';
-import Sidebar from '../components/sidebar/Sidebar'
+import { 
+  RecipeCards, 
+  SearchBar, 
+  Sidebar,
+  useFetch
+} from '../components';
 
 export const HomePage = () => {
   const numberOfRecipes = 30;
@@ -23,7 +25,7 @@ export const HomePage = () => {
       <div className="home__recipes">
         { error && <div> {error} </div> }
         { isPending && <div> Loading... </div> }
-        { recipes && <RecipeList recipes={recipes.recipes} /> }
+        { recipes && <RecipeCards recipes={recipes.recipes} /> }
       </div>
       
       <div className="home__sidebar">

@@ -1,6 +1,5 @@
-import useFetch from '../useFetch';
 import { useParams } from 'react-router-dom';
-import RecipeList from '../recipe-list/RecipeList';
+import { RecipeCards, useFetch } from '..';
 import './RandomRecipes.css'
 
 const RandomRecipes = () => {
@@ -8,7 +7,6 @@ const RandomRecipes = () => {
   const number = 30;
 
   const { tags } = useParams();
-  console.log(tags)
 
   let url = `https://api.spoonacular.com/recipes/random?tags=${tags}&number=${number}&apiKey=${key}`;
   const { data: recipes, isPending, error } = useFetch(url);
@@ -25,7 +23,7 @@ const RandomRecipes = () => {
       </div>
         { error && <div> {error} </div> }
         { isPending && <div> Loading... </div> }
-        { recipes && <RecipeList recipes={recipes.recipes} /> }
+        { recipes && <RecipeCards recipes={recipes.recipes} /> }
     </div>
    );
 }

@@ -12,7 +12,7 @@ export const SearchBar = () => {
         <input 
           className="search__input"
           onChange={(e) => setIngredientList(e.target.value)}
-          placeholder="Search"
+          placeholder="Search your favorite ingredients"
           value={ingredientList}
           type="text"
           required 
@@ -39,12 +39,14 @@ const SearchBarStyled = styled.div`
     border: 2px solid ${props => props.theme.colors.dark1};
     border-radius: 40px;
     & .search__input {
-      position: absolute;
       font-size: 1.125rem;
+      position: absolute;
+      width: 100%;
       left: 30px;
       border: none;
       background: none;
       outline: none;
+      
     }
     & .search__button {
       position: absolute;

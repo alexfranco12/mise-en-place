@@ -1,5 +1,6 @@
 import { useParams } from 'react-router';
-import useFetch from '../useFetch';
+import { useFetch } from '..';
+
 import CommentSection from '../comment-section/CommentSection'
 import './RecipeDetails.css'
 

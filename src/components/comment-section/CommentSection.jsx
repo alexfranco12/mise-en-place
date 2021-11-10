@@ -15,7 +15,6 @@ const CommentSection = () => {
   function handleSubmitComment(e) {
     e.preventDefault();
     userComments.push({user: {name, comment}})
-    console.log(userComments)
     setName("");
     setComment("")
     displayComments()

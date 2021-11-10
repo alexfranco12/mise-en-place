@@ -1,9 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { HomePage, NotFound } from './pages';
+import { HomePage, AboutPage, RecipeListPage, NotFound } from './pages';
 import RecipeDetails from './components/recipe-details/RecipeDetails'
-import About from './components/about/About'
 import RandomRecipes from './components/random-recipes/RandomRecipes';
-import ComplexRecipes from './components/complex-recipes/ComplexRecipes';
 import { MainLayout, InnerLayout } from './styles'
 
 function App() {
@@ -13,9 +11,9 @@ function App() {
         <InnerLayout>
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route path="/about" component={About} />
+            <Route path="/about" component={AboutPage} />
             <Route path="/recipe/details/:id" component={RecipeDetails} />
-            <Route path="/complex-search/:ingredientList" component={ComplexRecipes} />
+            <Route path="/complex-search/:ingredientList" component={RecipeListPage} />
             <Route path="/random-search/:tags" component={RandomRecipes} />
             <Route path="*" component={NotFound} />
           </Switch>
