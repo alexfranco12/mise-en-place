@@ -1,7 +1,13 @@
 .Sidebar {
-    display: flex;
-    flex-direction: column;
+  margin: auto 20px;
 }
-.filter-container {
-    margin-top: -15px;
+.sidebar__cuisine, .sidebar__diets, .sidebar__intolerances {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar__cuisine {
+  
+}
+.sidebar__diets, .sidebar__intolerances {
+  margin: 15px auto;
 }

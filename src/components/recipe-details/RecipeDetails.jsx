@@ -1,124 +1,91 @@
-import React, { useEffect, useState } from 'react';
-import data from '../sample-json-files/Recipe.json'
+import { useParams } from 'react-router';
+import useFetch from '../useFetch';
+import CommentSection from '../comment-section/CommentSection'
 import './RecipeDetails.css'
 
-function RecipeDetails( {match} ) {
-    const [recipe, setRecipe] = useState([]);
-    const [ingredients, setIngredients] = useState([]);
-    const [diets, setDiets] = useState([]);
-    const [instructionSteps, setInstructionSteps] = useState([]);
-    const [userComments, setUserComments] = useState([]);
-    const [name, setName] = useState("");
-    const [comment, setComment] = useState("")
+const RecipeDetails = () => {
+  const key = process.env.REACT_APP_SPOONACULAR_KEY
+  const { id } = useParams();
+  const url = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${key}`
 
-    const searchOptions = {
-        key : process.env.REACT_APP_SPOONACULAR_KEY,
-        baseURL : "https://api.spoonacular.com/recipes",
-        id : match.params.id,
-        includeNutrition : 'true'
-    };
+  const { data: recipe, isPending, error } = useFetch(url);
 
-    function fetchRecipe() {
+  const displayRecipeSummary = () => {
+    let str = recipe.summary;
+    return(str.replace( /(<([^>]+)>)/ig, ''))
+  }
 
-        const url = `${searchOptions.baseURL}/${searchOptions.id}/information?includeNutrition=${searchOptions.includeNutrition}&apiKey=${searchOptions.key}`
-            
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                setRecipe(data);
-                setIngredients(data.extendedIngredients);
-                setDiets(data.diets);
-                setInstructionSteps(data.analyzedInstructions[0].steps);
-            })
-            .catch(console.error);
+  const displayRecipeTags = (diets) => {
+    if (diets.length < 2) {
+      return(diets.map(diet => <span>{diet}</span>))
+    } else {
+      return(diets.map((diet) => (
+        <span>{recipe.diets.indexOf(diet) < recipe.diets.length-1 ? diet+' | ' : diet }</span>
+      )))
     }
+  }
 
-    useEffect( () => {
-        fetchRecipe();
-        displayComments();
-    }, []);
+  return (
+    <div className="recipe-details">
+      { isPending && <div> Loading... </div>}
+      { error && <div> { error } </div>}
+      { recipe && (
+        <article className="details__container">
+          <div className="detail__header">
+            <h1 className="title detail__title">{recipe.title}</h1>
+            <p className="recipe__credits">Compliments of {recipe.creditsText}</p>
+            <div className="recipe__tags">
+              {displayRecipeTags(recipe.diets)}
+              <p className="readyIn">ready in {recipe.readyInMinutes} minutes! </p>
+              <p>servings: {recipe.servings}</p>
+            </div>
+          </div>
 
-    function handleCommentChange(e) {
-        setComment(e.target.value);
-    }
-    function handleNameChange(e) {
-        setName(e.target.value);
-    }
-    function handleSubmitComment(e) {
-        e.preventDefault();
-        userComments.push({user: {name, comment}})
-        console.log(userComments)
-        setName("");
-        setComment("")
-        displayComments()
-    }
+          <p>{displayRecipeSummary()}</p>
 
-    function displayComments() {
-        return userComments.map(item => {
-            return (
-                <div className="comment">
-                    <h4 className="user-name">{item.user.name} - </h4>
-                    <p className="user-comment">{item.user.comment}</p>
+          <div className="recipe__summary">
+            <div 
+              className="recipe__ingredients" 
+              style={{
+                backgroundImage: `url(${recipe.image})`,
+                backgroundPosition: 'right',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat'
+              }}>
+              <h4>Ingredients</h4>
+              {recipe.extendedIngredients.map((ingredient) => (
+                <div className="ingredient">
+                  <input 
+                    type="checkbox"
+                    /> {ingredient.original}
                 </div>
-        )})
-    }
+              ))}
+            </div>
+            {/* <img 
+              className="recipe__image" 
+              src={recipe.image} 
+              alt={recipe.title} 
+            /> */}
+          </div>
 
-    return (
-        <div className="details-container">
-            <div className="recipe-header">
-                <h1 className="recipe-title">{recipe.title}</h1>
-                <p className="credits">Compliments of {recipe.creditsText}</p>
-                <div className="recipe-tags">
-                    <p>tags: {diets.map(diet => <span className="diet">{diet} </span>)}</p>
-                    <p className="ready-in">ready in {recipe.readyInMinutes} minutes! </p>
-                    <p>servings: {recipe.servings}</p>
-                </div>
- 
-            </div>
-            <p className="summary" dangerouslySetInnerHTML={{__html: recipe.summary}}>
-                </p>
-            <div className="ingredient-container">
-                <img className="recipe-image" src={recipe.image} alt={recipe.title} />
-                
-                <div className="ingredients">
-                    <h4>Ingredients</h4>
-                    {ingredients.map((item) => <label><input key="{item.id}" type="checkbox"/><span className="ingredient">{item.original}</span></label>)}
-                </div>
-            </div>
-            <h4>Instructions</h4>
-            <div className="instructions">
-                {instructionSteps.map((step) => <p className="step"><span>{step.number}.</span> {step.step}</p>)}
-            </div>
-            <div className="comment-container">
-                <h4 className="comment-header">Comments</h4>
-                    <form className="comment-form" onSubmit={handleSubmitComment}>
-                        <input 
-                            type="text" 
-                            className="comment-name" 
-                            placeholder="Full Name"
-                            value={name}
-                            onChange={handleNameChange}
-                        />
-                        <textarea 
-                            className="text-area"
-                            rows="5"
-                            cols="60"
-                            name="comment"
-                            value={comment}
-                            onChange={handleCommentChange}
-                            placeholder="Leave a comment!"
-                        >
-                        </textarea>
-                        <input 
-                            type="submit" 
-                            className="post-comment"
-                            value="Post"
-                        />
-                    </form>
-                    {displayComments()}
-            </div>
-        </div>
-    );
+          <h4>Instructions</h4>
+          <div className="recipe__instructions">
+            {recipe.analyzedInstructions[0].steps.map((step) => (
+              <p className="instructions__step">
+                  <span>{step.number}.</span> {step.step}
+              </p>
+            ))}
+          </div>
+
+          <div className="recipe__nutrition">
+            <h4 className="">Nutrition Facts</h4>
+          </div>
+
+          <CommentSection />
+        </article>
+      )}
+    </div>
+  );
 }
 
 export default RecipeDetails;
