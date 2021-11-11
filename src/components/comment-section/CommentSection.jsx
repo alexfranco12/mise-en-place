@@ -15,16 +15,15 @@ const CommentSection = () => {
   function handleSubmitComment(e) {
     e.preventDefault();
     userComments.push({user: {name, comment}})
-    console.log(userComments)
     setName("");
     setComment("")
     displayComments()
   }
 
   function displayComments() {
-    return userComments.map(comment => {
+    return userComments.map((comment, i) => {
       return (
-        <div className="comment">
+        <div className="comment" key={i}>
           <h4 className="user-name">{comment.user.name} - </h4>
           <p className="user-comment">{comment.user.comment}</p>
         </div>

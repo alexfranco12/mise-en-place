@@ -1,8 +1,8 @@
+import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import RecipeList from "../recipe-list/RecipeList";
-import useFetch from "../useFetch";
+import { RecipeCards, useFetch } from "..";
 
-const ComplexRecipes = () => {
+export const ComplexSearch = () => {
   const key = process.env.REACT_APP_SPOONACULAR_KEY;
   const number = 30;
   const { ingredientList } = useParams();
@@ -16,16 +16,16 @@ const ComplexRecipes = () => {
   }
 
   return ( 
-    <div className="random-recipes">
+    <ComplexSearchStyled>
       <div className="random-recipes__header">
         <h2 className="recipe__title"> RECIPES </h2>
         <p>for {listRecipes()}</p>
       </div>
         { error && <div> {error} </div> }
         { isPending && <div> Loading... </div> }
-        { recipes && <RecipeList recipes={recipes.results} /> }
-    </div>
+        { recipes && <RecipeCards recipes={recipes.results} /> }
+    </ComplexSearchStyled>
   );
-}
- 
-export default ComplexRecipes;
+};
+
+const ComplexSearchStyled = styled.div``;

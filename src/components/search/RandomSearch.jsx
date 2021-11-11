@@ -1,14 +1,12 @@
-import useFetch from '../useFetch';
+import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import RecipeList from '../recipe-list/RecipeList';
-import './RandomRecipes.css'
+import { RecipeCards, useFetch } from '..';
 
-const RandomRecipes = () => {
+export const RandomSearch = () => {
   const key = process.env.REACT_APP_SPOONACULAR_KEY;
   const number = 30;
 
   const { tags } = useParams();
-  console.log(tags)
 
   let url = `https://api.spoonacular.com/recipes/random?tags=${tags}&number=${number}&apiKey=${key}`;
   const { data: recipes, isPending, error } = useFetch(url);
@@ -18,16 +16,18 @@ const RandomRecipes = () => {
   // }
 
   return ( 
-    <div className="random-recipes">
-      <div className="random-recipes__header">
-        <h2 className="recipe__title"> RECIPES </h2>
+    <RandomSearchStyled>
+      <div className="header">
+        <h2 className="title"> RECIPES </h2>
         {/* <p>for {listRecipes()}</p> */}
       </div>
         { error && <div> {error} </div> }
         { isPending && <div> Loading... </div> }
-        { recipes && <RecipeList recipes={recipes.recipes} /> }
-    </div>
+        { recipes && <RecipeCards recipes={recipes.recipes} /> }
+    </RandomSearchStyled>
    );
-}
- 
-export default RandomRecipes;
+};
+
+const RandomSearchStyled = styled.div`
+
+`;
