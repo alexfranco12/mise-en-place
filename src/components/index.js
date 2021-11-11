@@ -1,5 +1,9 @@
 export * from './RecipeCards'
-export * from './SearchBar'
+
+// SEARCH
+export * from './search/SearchBar'
+export * from './search/ComplexSearch'
+export * from './search/RandomSearch'
 
 // SIDEBAR
 export * from './sidebar/Sidebar'

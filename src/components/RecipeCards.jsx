@@ -69,7 +69,7 @@ const RecipeCardsStyled = styled.div`
       border-bottom: 2px solid #ccc;
     }
     & .card__link {
-      color: #64968c;
+      color: ${props => props.theme.colors.secondary1};
       text-decoration: none;
       &:hover {
         text-decoration: underline;

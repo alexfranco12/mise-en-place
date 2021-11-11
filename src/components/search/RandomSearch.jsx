@@ -1,8 +1,8 @@
+import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { RecipeCards, useFetch } from '..';
-import './RandomRecipes.css'
 
-const RandomRecipes = () => {
+export const RandomSearch = () => {
   const key = process.env.REACT_APP_SPOONACULAR_KEY;
   const number = 30;
 
@@ -16,16 +16,18 @@ const RandomRecipes = () => {
   // }
 
   return ( 
-    <div className="random-recipes">
-      <div className="random-recipes__header">
-        <h2 className="recipe__title"> RECIPES </h2>
+    <RandomSearchStyled>
+      <div className="header">
+        <h2 className="title"> RECIPES </h2>
         {/* <p>for {listRecipes()}</p> */}
       </div>
         { error && <div> {error} </div> }
         { isPending && <div> Loading... </div> }
         { recipes && <RecipeCards recipes={recipes.recipes} /> }
-    </div>
+    </RandomSearchStyled>
    );
-}
- 
-export default RandomRecipes;
+};
+
+const RandomSearchStyled = styled.div`
+
+`;

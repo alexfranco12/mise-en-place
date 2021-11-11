@@ -1,8 +1,12 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { HomePage, AboutPage, RecipeListPage, NotFound } from './pages';
-import RecipeDetails from './components/recipe-details/RecipeDetails'
-import RandomRecipes from './components/random-recipes/RandomRecipes';
 import { MainLayout, InnerLayout } from './styles'
+import { ComplexSearch, RandomSearch } from './components'
+import { 
+  HomePage, 
+  AboutPage, 
+  DetailsPage, 
+  NotFound 
+} from './pages';
 
 function App() {
   return (
@@ -12,9 +16,9 @@ function App() {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/about" component={AboutPage} />
-            <Route path="/recipe/details/:id" component={RecipeDetails} />
-            <Route path="/complex-search/:ingredientList" component={RecipeListPage} />
-            <Route path="/random-search/:tags" component={RandomRecipes} />
+            <Route path="/recipe/details/:id" component={DetailsPage} />
+            <Route path="/complex-search/:ingredientList" component={ComplexSearch} />
+            <Route path="/random-search/:tags" component={RandomSearch} />
             <Route path="*" component={NotFound} />
           </Switch>
         </InnerLayout>
